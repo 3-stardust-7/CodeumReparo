@@ -18,7 +18,7 @@ const LoginForm = () => {
   return (
     <div className="pt-20">
       <div className="w-4/12 mx-auto bg-gray-800 text-white p-10 rounded-lg shadow-lg space-y-4">
-        <h1 className="text-center font-semibold absolute left-[500px] text-[25px] mb-10">
+        <h1 className="text-center font-semibold absolute text-[25px] ">
           Login To Your Account
         </h1>
         <div>
@@ -27,7 +27,7 @@ const LoginForm = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+            className="w-full mt-20 p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
             required
           />
         </div>

@@ -64,7 +64,7 @@ function Ongoing() {
 
   return (
     <div className="flex flex-col items-center min-h-screen text-white relative p-4">
-      <div className="flex flex-col justify-center h-full w-5/12 px-4 py-4 mt-20">
+      <div className="flex flex-col justify-center h-full w-full px-4 py-4 mt-20">
         {hasTasks && (
           <div className="flex items-start w-full mb-6">
             <input
@@ -82,7 +82,9 @@ function Ongoing() {
             </button>
           </div>
         )}
-        <TaskList tasks={filteredTasks} message="No Ongoing Tasks" />
+        <div className="justify-center items-center ">
+          <TaskList tasks={filteredTasks} message="No Ongoing Tasks" />
+        </div>
       </div>
     </div>
   );

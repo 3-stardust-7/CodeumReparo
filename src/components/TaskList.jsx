@@ -11,7 +11,7 @@ const TaskList = ({ tasks, message }) => {
     );
   }
   return (
-    <div className="flex flex-col items-start gap-3 mt-6 w-full max-w-8/12">
+    <div className="flex flex-col items-start gap-3 mt-6 w-full max-w-full">
       {tasks.map((task, i) => (
         <Link
           to={`/task/${task.id}`}

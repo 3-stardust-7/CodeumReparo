@@ -64,7 +64,7 @@ const UpdateTaskForm = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full p-3 mt-1 bg-gray-700 text-white text-[2px] rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+              className="w-full p-3 mt-1 bg-gray-700 text-white text-md rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
               placeholder="Enter task name"
               required
             />
