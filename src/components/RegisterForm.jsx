@@ -27,7 +27,7 @@ const RegisterForm = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 bg-grey-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+            className="w-full p-3 bg-grey-700 text-black rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
             required
           />
         </div>
