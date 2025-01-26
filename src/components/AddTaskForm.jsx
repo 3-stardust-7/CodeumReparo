@@ -68,7 +68,7 @@ const AddTaskForm = ({ onTaskAdded }) => {
         className="max-w-md mx-auto bg-gray-800 text-white p-6 rounded-lg shadow-lg space-y-4"
       >
         <div>
-          <label className="block text-sm mb-[-10px] font-medium text-gray-300 mb-2">
+          <label className="block text-sm mb-[10px] font-medium text-gray-300 mb-2">
             Task Name:
           </label>
           <input
