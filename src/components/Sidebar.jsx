@@ -84,7 +84,7 @@ const Sidebar = ({ onLogout }) => {
               onClick={() => navigate("/expired")}
               className={`w-full text-left px-4 py-2 rounded-lg cursor-pointer ${
                 isActive("/expired")
-                  ? "bg-gray-700 hover:bg-gray-600 text-white"
+                  ? "bg-teal-600 text-white"
                   : "bg-gray-700 hover:bg-gray-600 text-white"
               }`}
             >

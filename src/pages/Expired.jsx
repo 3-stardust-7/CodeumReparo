@@ -64,7 +64,7 @@ function Expired() {
 
   return (
     <div className="flex flex-col items-center min-h-screen text-white relative p-4">
-      <div className="flex flex-col justify-center h-full w-1/12 px-4 py-4 mt-20">
+      <div className="flex flex-col justify-center h-full w-1/2 px-4 py-4 mt-20">
         
         {hasTasks && (<div className="flex w-full mb-6">
           <input
