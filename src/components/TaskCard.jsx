@@ -11,7 +11,7 @@ const TaskCard = ({ task }) => {
     <div
       className={`rounded-lg p-4 ${bgColor} bg-opacity-80 text-white w-full flex items-center`}
     >
-      <h3 className="text-lg font-semibold">{task.name}</h3>
+      <h3 className="text-lg  font-semibold">{task.name}</h3>
     </div>
   );
 };

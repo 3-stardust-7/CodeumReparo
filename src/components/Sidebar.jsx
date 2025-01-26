@@ -22,7 +22,7 @@ const Sidebar = ({ onLogout }) => {
           <li>
             <button
               onClick={() => navigate("/add")}
-              className={`w-full mb-4 text-left px-4 py-2 rounded-lg cursor-pointer ${
+              className={`w-full  text-left px-4 py-2 rounded-lg cursor-pointer ${
                 isActive("/add")
                   ? "bg-teal-600 text-white"
                   : "bg-gray-700 hover:bg-gray-600 text-white"
@@ -34,7 +34,7 @@ const Sidebar = ({ onLogout }) => {
           <li>
             <button
               onClick={() => navigate("/")}
-              className={`w-full mb-4 text-left px-4 py-2 rounded-lg cursor-pointer ${
+              className={`w-full  text-left px-4 py-2 rounded-lg cursor-pointer ${
                 isActive("/")
                   ? "bg-teal-600 text-white"
                   : "bg-gray-700 hover:bg-gray-600 text-white"

@@ -60,7 +60,7 @@ const TaskDetails = () => {
     <div className="pt-20">
       <div className="min-h-screen text-white flex flex-col items-center p-6">
         <div className="w-full max-w-lg bg-gray-800 rounded-lg shadow-lg p-6">
-          <h1 className="text-2xl font-bold mb-4 text-teal-400 -mt-10">
+          <h1 className="text-2xl font-bold mb-5 text-teal-400 mt-5 text-center">
             {task.name}
           </h1>
           <p className="text-gray-300 mb-4">{task.desc}</p>
