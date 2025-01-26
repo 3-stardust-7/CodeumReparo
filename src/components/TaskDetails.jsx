@@ -88,7 +88,7 @@ const TaskDetails = () => {
                 ))}
               </div>
             ) : (
-              <span className="text-gray-400">No tags assigned</span>
+              <span className="text-gray-400">{task.tags}</span>
             )}
           </p>
 
@@ -114,7 +114,7 @@ const TaskDetails = () => {
           <div className="flex justify-between">
             <button
               onClick={handleDelete}
-              className="pr-4 pl-10 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700"
+              className="pr-4 pl-4 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700"
                           >
               Delete Task
             </button>

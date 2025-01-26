@@ -64,7 +64,7 @@ function Ongoing() {
 
   return (
     <div className="flex flex-col items-center min-h-screen text-white relative p-4">
-      <div className="flex flex-col justify-center h-full w-full px-4 py-4 mt-20">
+      <div className="flex flex-col justify-center h-full w-1/2 px-4 py-4 mt-20">
         {hasTasks && (
           <div className="flex items-start w-full mb-6">
             <input
@@ -72,11 +72,11 @@ function Ongoing() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search tasks..."
-              className="w-full p-3 bg-gray-700 text-white rounded-l-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+              className=" w-full p-3 bg-gray-700 text-white rounded-l-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
             />
             <button
               onClick={handleSearch}
-              className="bg-teal-600 text-white pl-20 px-6 rounded-r-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
+              className="bg-teal-600 text-white text-center px-10 py-3 rounded-r-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
             >
               Search
             </button>

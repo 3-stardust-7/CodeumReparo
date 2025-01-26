@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { logout } from "../backend/supabase/auth";
 
-const Sidebar = ({ onLogout }) => {
+const Sidebar = ({ logout }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -9,7 +9,7 @@ const Sidebar = ({ onLogout }) => {
 
   const handleLogout = async () => {
     await logout();
-    navigate("/login");
+    navigate("/logout");
   };
 
   return (

@@ -38,7 +38,7 @@ const LoginForm = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full mb-5 p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-[20px] focus:ring-red-800"
+            className="w-full mb-5 p-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
             required
           />
         </div>
