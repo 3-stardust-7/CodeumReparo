@@ -7,7 +7,6 @@
 
 
 
-
 import { useEffect, useState } from "react";
 import TaskList from "../components/TaskList";
 import { fetchActiveTasks } from "../backend/supabase/tasks";
@@ -22,6 +21,7 @@ function Home() {
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [expiredTasks, setExpiredTasks] = useState([]); // For expired tasks
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,8 +43,18 @@ function Home() {
     if (user) {
       fetchActiveTasks(user?.id)
         .then((taskData) => {
-          setTasks(taskData);
-          setFilteredTasks(taskData);
+          // Separate tasks into expired and active tasks
+          const now = new Date();
+          const active = taskData.filter(
+            (task) => new Date(task.deadline) > now
+          );
+          const expired = taskData.filter(
+            (task) => new Date(task.deadline) <= now
+          );
+
+          setTasks(active);
+          setExpiredTasks(expired); // Store expired tasks separately
+          setFilteredTasks(active); // Initially set filtered tasks to active tasks
         })
         .catch((error) => {
           console.error("Error fetching tasks:", error);
@@ -76,38 +86,46 @@ function Home() {
     setFilteredTasks(results.map((result) => result.item));
   }, 300); // 300ms debounce
 
-  const hasTasks = tasks.length > 0;
+  const hasActiveTasks = tasks.length > 0;
+  const hasExpiredTasks = expiredTasks.length > 0;
 
   return (
     <div className="flex flex-col items-center min-h-screen text-white invert relative p-4">
       <div className="flex flex-col justify-center h-full w-5/12 px-4 py-4 mt-20">
-        {hasTasks && (
-          <div className="flex w-full mb-6">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                handleSearch(); // Trigger search as the user types
-              }}
-              placeholder="Search tasks..."
-              className="w-full p-3 bg-gray-700 text-white rounded-l-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
-            />
-            <button
-              onClick={handleSearch}
-              className="bg-teal-600 text-white px-6 rounded-r-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
-            >
-              Search
-            </button>
-          </div>
-        )}
+        <div className="flex w-full mb-6">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              handleSearch(); // Trigger search as the user types
+            }}
+            placeholder="Search tasks..."
+            className="w-full p-3 bg-gray-700 text-white rounded-l-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
+          />
+          <button
+            onClick={handleSearch}
+            className="bg-teal-600 text-white px-6 rounded-r-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400"
+          >
+            Search
+          </button>
+        </div>
 
-        {hasTasks ? (
-          <TaskList tasks={filteredTasks} message="No Tasks Yet" />
+        {/* Active Tasks */}
+        {hasActiveTasks ? (
+          <TaskList tasks={filteredTasks} message="No Active Tasks Yet" />
         ) : (
           <p className="text-center text-gray-400">
-            You have no tasks at the moment.
+            You have no active tasks at the moment.
           </p>
+        )}
+
+        {/* Expired Tasks */}
+        {hasExpiredTasks && (
+          <div className="mt-6">
+            <h2 className="text-xl text-gray-300">Expired Tasks</h2>
+            <TaskList tasks={expiredTasks} message="No Expired Tasks" />
+          </div>
         )}
       </div>
     </div>
