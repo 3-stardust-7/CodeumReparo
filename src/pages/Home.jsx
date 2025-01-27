@@ -1,9 +1,20 @@
+// 
+
+
+
+
+
+
+
+
+
 import { useEffect, useState } from "react";
 import TaskList from "../components/TaskList";
 import { fetchActiveTasks } from "../backend/supabase/tasks";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../backend/supabase/supabaseClient";
 import Fuse from "fuse.js";
+import { debounce } from "lodash"; // import debounce function
 
 function Home() {
   const [user, setUser] = useState(null);
@@ -30,10 +41,14 @@ function Home() {
 
   useEffect(() => {
     if (user) {
-      fetchActiveTasks(user?.id).then((taskData) => {
-        setTasks(taskData);
-        setFilteredTasks(taskData);
-      });
+      fetchActiveTasks(user?.id)
+        .then((taskData) => {
+          setTasks(taskData);
+          setFilteredTasks(taskData);
+        })
+        .catch((error) => {
+          console.error("Error fetching tasks:", error);
+        });
     }
   }, [user]);
 
@@ -45,7 +60,8 @@ function Home() {
     return;
   }
 
-  const handleSearch = () => {
+  // Debounced search handler
+  const handleSearch = debounce(() => {
     if (!searchQuery.trim()) {
       setFilteredTasks(tasks);
       return;
@@ -58,7 +74,7 @@ function Home() {
 
     const results = fuse.search(searchQuery);
     setFilteredTasks(results.map((result) => result.item));
-  };
+  }, 300); // 300ms debounce
 
   const hasTasks = tasks.length > 0;
 
@@ -70,7 +86,10 @@ function Home() {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                handleSearch(); // Trigger search as the user types
+              }}
               placeholder="Search tasks..."
               className="w-full p-3 bg-gray-700 text-white rounded-l-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-400"
             />
@@ -83,7 +102,13 @@ function Home() {
           </div>
         )}
 
-        <TaskList tasks={filteredTasks} message="No Tasks Yet" />
+        {hasTasks ? (
+          <TaskList tasks={filteredTasks} message="No Tasks Yet" />
+        ) : (
+          <p className="text-center text-gray-400">
+            You have no tasks at the moment.
+          </p>
+        )}
       </div>
     </div>
   );
