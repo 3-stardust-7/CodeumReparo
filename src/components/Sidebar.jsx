@@ -13,7 +13,7 @@ const Sidebar = ({ logout }) => {
   };
 
   return (
-    <div className="h-screen w-64 bg-gray-800 shadow-lg p-6 flex flex-col justify-between left-0 top-0 z-50 ">
+    <div className="h-screen fixed w-64 bg-gray-800 shadow-lg p-6 flex flex-col justify-between left-0 top-0 z-50 ">
       <div>
         <h2 className="text-2xl text-center font-bold text-teal-400 mb-10 mt-[40px]">
           TaskFlow

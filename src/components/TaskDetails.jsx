@@ -88,7 +88,7 @@ const TaskDetails = () => {
                 ))}
               </div>
             ) : (
-              <span className="text-gray-400">{task.tags}</span>
+              <span className="text-gray-400">{task.tag}</span>
             )}
           </p>
 
